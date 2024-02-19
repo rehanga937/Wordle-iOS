@@ -14,13 +14,17 @@ class ViewController: UIViewController {
     var slots = [UILabel?]()
     var gridRow = 1
     var gridCol = 1
+    var letterCounts:Dictionary<Character,Int8> = [:]
+    var positionStatus = [Int8]()
+    var win:Bool = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        var randomNumber = Int.random(in: 0..<words.count)
+        let randomNumber = Int.random(in: 0..<words.count)
         testWord = words[randomNumber]
         print("Test Word: " + testWord)
         slots = [Label_1,Label_2,Label_3,Label_4,Label_5,Label_6,Label_7,Label_8,Label_9,Label_10,Label_11,Label_12,Label_13,Label_14,Label_15,Label_16,Label_17,Label_18,Label_19,Label_20,Label_21,Label_22,Label_23,Label_24,Label_25,Label_26,Label_27,Label_28,Label_29,Label_30]
+        letterCounts = GetLetterCounts(testWord)
     }
 
     @IBOutlet weak var Label_1: UILabel!
@@ -84,7 +88,7 @@ class ViewController: UIViewController {
     @IBAction func PressReturn(_ sender: Any) {TypeLetter("⏎")}
     
     func TypeLetter(_ letter:Character) {
-        var gridPos = (gridRow-1)*5 + gridCol
+        let gridPos = (gridRow-1)*5 + gridCol
         if (letter == "⌫") {
             if (gridCol != 1) {
                 slots[gridPos - 2]!.text = ""
@@ -94,8 +98,15 @@ class ViewController: UIViewController {
             }
         } else if (letter == "⏎") {
             if (gridCol == 6 && gridRow != 6) {
-                gridRow += 1
-                gridCol = 1
+                let userWord = GetUserWord()
+                if (IsUserWordValid(userWord)) {
+                    //proceed
+                    gridRow += 1
+                    gridCol = 1
+                } else {
+                    //word not found code
+                }
+                
             }
         } else {
             if (gridCol < 6) {
@@ -105,7 +116,65 @@ class ViewController: UIViewController {
         }
     }
     
+    func GetUserWord() -> String {
+        var userWord:String = ""
+        var gridPos = (gridRow-1)*5 + gridCol
+        for i in 1...5 {
+            gridPos -= 1
+            userWord += (slots[gridPos - 1]!.text) ?? ""
+        }
+        return userWord
+    }
     
+    func BinarySearch(_ element:String, _ array:[String]) -> Bool {
+        var low = 0
+        var high = array.count - 1
+        
+        while low <= high {
+            let mid = low + (high - low) / 2
+            
+            switch array[mid] {
+            case element:
+                return true
+            case let value where value < element:
+                low = mid + 1
+            default:
+                high = mid - 1
+            }
+        }
+        
+        return false
+    }
+    
+    func IsUserWordValid(_ userWord:String) -> Bool{
+        if (BinarySearch(userWord, words)){
+            return true
+        }
+        if (BinarySearch(userWord, guesses)){
+            return true
+        }
+        return false
+    }
+    
+    func GetLetterCounts(_ testWord:String) -> Dictionary<Character,Int8>{
+        var letterCounts:Dictionary<Character,Int8> = [:]
+        for c in testWord {
+            if let count=letterCounts[c] {
+                letterCounts[c]!+=1
+            } else {
+                letterCounts.updateValue(1, forKey: c)
+            }
+        }
+        return letterCounts
+    }
+    
+    func WordleMain() {
+        
+    }
+    
+    func ExactPositionMatcher(word:String) {
+        
+    }
     
 }
 
