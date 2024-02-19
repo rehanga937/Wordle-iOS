@@ -16,6 +16,7 @@
 		A34891CA2B83088500135DE3 /* Wordle_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34891C92B83088500135DE3 /* Wordle_iOSTests.swift */; };
 		A34891D42B83088500135DE3 /* Wordle_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34891D32B83088500135DE3 /* Wordle_iOSUITests.swift */; };
 		A34891D62B83088500135DE3 /* Wordle_iOSUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34891D52B83088500135DE3 /* Wordle_iOSUITestsLaunchTests.swift */; };
+		A34891E42B8326EB00135DE3 /* words.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A34891E32B8326EB00135DE3 /* words.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,8 @@
 		A34891CF2B83088500135DE3 /* Wordle iOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Wordle iOSUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A34891D32B83088500135DE3 /* Wordle_iOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wordle_iOSUITests.swift; sourceTree = "<group>"; };
 		A34891D52B83088500135DE3 /* Wordle_iOSUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wordle_iOSUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		A34891E22B8326EB00135DE3 /* Wordle iOS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Wordle iOS-Bridging-Header.h"; sourceTree = "<group>"; };
+		A34891E32B8326EB00135DE3 /* words.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = words.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +109,8 @@
 				A34891BB2B83088500135DE3 /* Assets.xcassets */,
 				A34891BD2B83088500135DE3 /* LaunchScreen.storyboard */,
 				A34891C02B83088500135DE3 /* Info.plist */,
+				A34891E32B8326EB00135DE3 /* words.cpp */,
+				A34891E22B8326EB00135DE3 /* Wordle iOS-Bridging-Header.h */,
 			);
 			path = "Wordle iOS";
 			sourceTree = "<group>";
@@ -195,6 +200,7 @@
 				TargetAttributes = {
 					A34891AE2B83088400135DE3 = {
 						CreatedOnToolsVersion = 15.2;
+						LastSwiftMigration = 1520;
 					};
 					A34891C42B83088500135DE3 = {
 						CreatedOnToolsVersion = 15.2;
@@ -259,6 +265,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A34891B72B83088400135DE3 /* ViewController.swift in Sources */,
+				A34891E42B8326EB00135DE3 /* words.cpp in Sources */,
 				A34891B32B83088400135DE3 /* AppDelegate.swift in Sources */,
 				A34891B52B83088400135DE3 /* SceneDelegate.swift in Sources */,
 			);
@@ -440,6 +447,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = SQ54WC5Q2W;
@@ -448,8 +456,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -458,6 +465,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "rehanga.Wordle-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "Wordle iOS/Wordle iOS-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -468,6 +477,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = SQ54WC5Q2W;
@@ -476,8 +486,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -486,6 +495,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "rehanga.Wordle-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "Wordle iOS/Wordle iOS-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
