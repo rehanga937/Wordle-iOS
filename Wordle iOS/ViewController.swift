@@ -53,9 +53,34 @@ class ViewController: UIViewController {
     @IBOutlet weak var Label_29: UILabel!
     @IBOutlet weak var Label_30: UILabel!
     
-    @IBAction func PressQ(_ sender: Any) {
-        TypeLetter("Q")
-    }
+    @IBAction func PressQ(_ sender: Any) {TypeLetter("Q")}
+    @IBAction func PressW(_ sender: Any) {TypeLetter("W")}
+    @IBAction func PressE(_ sender: Any) {TypeLetter("E")}
+    @IBAction func PressR(_ sender: Any) {TypeLetter("R")}
+    @IBAction func PressT(_ sender: Any) {TypeLetter("T")}
+    @IBAction func PressY(_ sender: Any) {TypeLetter("Y")}
+    @IBAction func PressU(_ sender: Any) {TypeLetter("U")}
+    @IBAction func PressI(_ sender: Any) {TypeLetter("I")}
+    @IBAction func PressO(_ sender: Any) {TypeLetter("O")}
+    @IBAction func PressP(_ sender: Any) {TypeLetter("P")}
+    @IBAction func PressA(_ sender: Any) {TypeLetter("A")}
+    @IBAction func PressS(_ sender: Any) {TypeLetter("S")}
+    @IBAction func PressD(_ sender: Any) {TypeLetter("D")}
+    @IBAction func PressF(_ sender: Any) {TypeLetter("F")}
+    @IBAction func PressG(_ sender: Any) {TypeLetter("G")}
+    @IBAction func PressH(_ sender: Any) {TypeLetter("H")}
+    @IBAction func PressJ(_ sender: Any) {TypeLetter("J")}
+    @IBAction func PressK(_ sender: Any) {TypeLetter("K")}
+    @IBAction func PressL(_ sender: Any) {TypeLetter("L")}
+    @IBAction func PressZ(_ sender: Any) {TypeLetter("Z")}
+    @IBAction func PressX(_ sender: Any) {TypeLetter("X")}
+    @IBAction func PressC(_ sender: Any) {TypeLetter("C")}
+    @IBAction func PressV(_ sender: Any) {TypeLetter("V")}
+    @IBAction func PressB(_ sender: Any) {TypeLetter("B")}
+    @IBAction func PressN(_ sender: Any) {TypeLetter("N")}
+    @IBAction func PressM(_ sender: Any) {TypeLetter("M")}
+    @IBAction func PressBackspace(_ sender: Any) {TypeLetter("⌫")}
+    @IBAction func PressReturn(_ sender: Any) {TypeLetter("⏎")}
     
     func TypeLetter(_ letter:Character){
         gridPosition += 1
