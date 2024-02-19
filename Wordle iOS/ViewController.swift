@@ -12,7 +12,8 @@ class ViewController: UIViewController {
     
     var testWord:String = ""
     var slots = [UILabel?]()
-    var gridPosition = 0
+    var gridRow = 1
+    var gridCol = 1
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -82,10 +83,29 @@ class ViewController: UIViewController {
     @IBAction func PressBackspace(_ sender: Any) {TypeLetter("⌫")}
     @IBAction func PressReturn(_ sender: Any) {TypeLetter("⏎")}
     
-    func TypeLetter(_ letter:Character){
-        gridPosition += 1
-        print("Grid Position: " + String(gridPosition))
-        slots[gridPosition - 1]!.text = String(letter)
+    func TypeLetter(_ letter:Character) {
+        var gridPos = (gridRow-1)*5 + gridCol
+        if (letter == "⌫") {
+            if (gridCol != 1) {
+                slots[gridPos - 2]!.text = ""
+                gridCol -= 1
+            } else {
+                slots[gridPos - 1]!.text = ""
+            }
+        } else if (letter == "⏎") {
+            if (gridCol == 6 && gridRow != 6) {
+                gridRow += 1
+                gridCol = 1
+            }
+        } else {
+            if (gridCol < 6) {
+                slots[gridPos - 1]!.text = String(letter)
+                gridCol += 1
+            }
+        }
     }
+    
+    
+    
 }
 
