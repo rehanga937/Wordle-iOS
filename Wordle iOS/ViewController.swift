@@ -7,11 +7,16 @@
 
 import UIKit
 
+
 class ViewController: UIViewController {
+    
+    var testWord:String = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        var randomNumber = Int.random(in: 0..<words.count)
+        testWord = words[randomNumber]
+        print("Test Word: " + testWord)
     }
 
     @IBOutlet weak var Label_1: UILabel!

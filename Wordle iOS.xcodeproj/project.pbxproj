@@ -16,7 +16,7 @@
 		A34891CA2B83088500135DE3 /* Wordle_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34891C92B83088500135DE3 /* Wordle_iOSTests.swift */; };
 		A34891D42B83088500135DE3 /* Wordle_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34891D32B83088500135DE3 /* Wordle_iOSUITests.swift */; };
 		A34891D62B83088500135DE3 /* Wordle_iOSUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34891D52B83088500135DE3 /* Wordle_iOSUITestsLaunchTests.swift */; };
-		A34891E42B8326EB00135DE3 /* words.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A34891E32B8326EB00135DE3 /* words.cpp */; };
+		A39489572B832F2500C2DD55 /* words.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39489562B832F2500C2DD55 /* words.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,8 +50,7 @@
 		A34891CF2B83088500135DE3 /* Wordle iOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Wordle iOSUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A34891D32B83088500135DE3 /* Wordle_iOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wordle_iOSUITests.swift; sourceTree = "<group>"; };
 		A34891D52B83088500135DE3 /* Wordle_iOSUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wordle_iOSUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		A34891E22B8326EB00135DE3 /* Wordle iOS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Wordle iOS-Bridging-Header.h"; sourceTree = "<group>"; };
-		A34891E32B8326EB00135DE3 /* words.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = words.cpp; sourceTree = "<group>"; };
+		A39489562B832F2500C2DD55 /* words.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = words.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,8 +108,7 @@
 				A34891BB2B83088500135DE3 /* Assets.xcassets */,
 				A34891BD2B83088500135DE3 /* LaunchScreen.storyboard */,
 				A34891C02B83088500135DE3 /* Info.plist */,
-				A34891E32B8326EB00135DE3 /* words.cpp */,
-				A34891E22B8326EB00135DE3 /* Wordle iOS-Bridging-Header.h */,
+				A39489562B832F2500C2DD55 /* words.swift */,
 			);
 			path = "Wordle iOS";
 			sourceTree = "<group>";
@@ -265,7 +263,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A34891B72B83088400135DE3 /* ViewController.swift in Sources */,
-				A34891E42B8326EB00135DE3 /* words.cpp in Sources */,
+				A39489572B832F2500C2DD55 /* words.swift in Sources */,
 				A34891B32B83088400135DE3 /* AppDelegate.swift in Sources */,
 				A34891B52B83088400135DE3 /* SceneDelegate.swift in Sources */,
 			);
@@ -465,7 +463,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "rehanga.Wordle-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "Wordle iOS/Wordle iOS-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -495,7 +492,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "rehanga.Wordle-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "Wordle iOS/Wordle iOS-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
