@@ -47,7 +47,7 @@ class ViewController: UIViewController {
     //Error label
     @IBOutlet weak var Error_Label: UILabel!
     
-    //keyboard
+    //keyboard actions
     @IBAction func PressQ(_ sender: Any) {TypeLetter("Q")}
     @IBAction func PressW(_ sender: Any) {TypeLetter("W")}
     @IBAction func PressE(_ sender: Any) {TypeLetter("E")}
@@ -77,9 +77,39 @@ class ViewController: UIViewController {
     @IBAction func PressBackspace(_ sender: Any) {TypeLetter("⌫")}
     @IBAction func PressReturn(_ sender: Any) {TypeLetter("⏎")}
     
+    //keyboard letter button outlets
+    @IBOutlet weak var ButtonQ: UIButton!
+    @IBOutlet weak var ButtonA: UIButton!
+    @IBOutlet weak var ButtonB: UIButton!
+    @IBOutlet weak var ButtonC: UIButton!
+    @IBOutlet weak var ButtonD: UIButton!
+    @IBOutlet weak var ButtonE: UIButton!
+    @IBOutlet weak var ButtonF: UIButton!
+    @IBOutlet weak var ButtonG: UIButton!
+    @IBOutlet weak var ButtonH: UIButton!
+    @IBOutlet weak var ButtonI: UIButton!
+    @IBOutlet weak var ButtonJ: UIButton!
+    @IBOutlet weak var ButtonK: UIButton!
+    @IBOutlet weak var ButtonL: UIButton!
+    @IBOutlet weak var ButtonM: UIButton!
+    @IBOutlet weak var ButtonN: UIButton!
+    @IBOutlet weak var ButtonO: UIButton!
+    @IBOutlet weak var ButtonP: UIButton!
+    @IBOutlet weak var ButtonR: UIButton!
+    @IBOutlet weak var ButtonS: UIButton!
+    @IBOutlet weak var ButtonT: UIButton!
+    @IBOutlet weak var ButtonU: UIButton!
+    @IBOutlet weak var ButtonV: UIButton!
+    @IBOutlet weak var ButtonW: UIButton!
+    @IBOutlet weak var ButtonX: UIButton!
+    @IBOutlet weak var ButtonY: UIButton!
+    @IBOutlet weak var ButtonZ: UIButton!
+
+    
     ///#Attributes
     var testWord:String = ""
     var slots = [UILabel?]()
+    var keyboardLetters = [UIButton?]()
     var gridRow = 1
     var gridCol = 1
     var letterCounts:Dictionary<Character,Int8> = [:]
@@ -92,6 +122,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         slots = [Label_1,Label_2,Label_3,Label_4,Label_5,Label_6,Label_7,Label_8,Label_9,Label_10,Label_11,Label_12,Label_13,Label_14,Label_15,Label_16,Label_17,Label_18,Label_19,Label_20,Label_21,Label_22,Label_23,Label_24,Label_25,Label_26,Label_27,Label_28,Label_29,Label_30]
+        keyboardLetters = [ButtonA, ButtonB, ButtonC, ButtonD, ButtonE, ButtonF, ButtonG, ButtonH, ButtonI, ButtonJ, ButtonK, ButtonL, ButtonM, ButtonN, ButtonO, ButtonP, ButtonQ, ButtonR, ButtonS, ButtonT, ButtonU, ButtonV, ButtonW, ButtonX, ButtonY, ButtonZ]
         InitializeWordle()
     }
     
@@ -106,6 +137,9 @@ class ViewController: UIViewController {
         for label in slots {
             label!.backgroundColor = .systemGray5
             label!.text = ""
+        }
+        for button in keyboardLetters {
+            button!.configuration?.background.backgroundColor = .clear
         }
     }
 
@@ -213,6 +247,10 @@ class ViewController: UIViewController {
                 //mark position green
                 let gridPos = (gridRow-1)*5 + gridCol - 5 + index
                 slots[gridPos - 1]!.backgroundColor = .green
+                //mark keyboard letter green
+                let stringC = String(c)
+                let adjustedAsciiValue:Int = Int(UnicodeScalar(stringC)!.value) - 65
+                keyboardLetters[adjustedAsciiValue]!.configuration?.background.backgroundColor = .green
             }
             index += 1
         }
@@ -230,15 +268,27 @@ class ViewController: UIViewController {
     func NonExactPositionMatcher(word:String) {
         var index = 0
         for c in word {
+            let stringC = String(c)
+            let adjustedAsciiValue:Int = Int(UnicodeScalar(stringC)!.value) - 65
             let gridPos = (gridRow-1)*5 + gridCol - 5 + index
             if (slots[gridPos - 1]!.backgroundColor == .green) {
                 index += 1
                 continue
             }//if position has been marked correct (green), can skip
             if (copyOfLetterCounts[c] ?? 0  > 0) {
-                slots[gridPos - 1]!.backgroundColor = .yellow
                 copyOfLetterCounts[c]! -= 1
-            }
+                //mark position yellow
+                slots[gridPos - 1]!.backgroundColor = .yellow
+                //mark keyboard letter yellow (if not already marked green)
+                if (keyboardLetters[adjustedAsciiValue]!.configuration?.background.backgroundColor != .green) {
+                    keyboardLetters[adjustedAsciiValue]!.configuration?.background.backgroundColor = .yellow
+                }
+            }//if letter exists but in wrong position, mark yellow
+            else {
+                if (keyboardLetters[adjustedAsciiValue]!.configuration?.background.backgroundColor == .clear) {
+                    keyboardLetters[adjustedAsciiValue]!.configuration?.background.backgroundColor = .gray
+                }
+            }//marks letters on keyboard that don't exist in the test word in gray
             index += 1
         }
     }//marks letters of the user's guess present in the test word, but in wrong position in yellow color. Must be called after ExactPositionMatcher function due to use of copyOfLetterCounts dictionary.

@@ -980,6 +980,32 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="ButtonA" destination="h6m-0s-AbY" id="ran-3q-yY0"/>
+                        <outlet property="ButtonB" destination="e12-ci-7l0" id="8Mf-pC-xs5"/>
+                        <outlet property="ButtonC" destination="Igx-NN-zIs" id="oF0-Cj-MOa"/>
+                        <outlet property="ButtonD" destination="mTH-HC-oWw" id="BhQ-wI-u11"/>
+                        <outlet property="ButtonE" destination="UBj-1B-nd0" id="m7e-O4-oPz"/>
+                        <outlet property="ButtonF" destination="UxC-kL-H2i" id="2XK-b6-gGY"/>
+                        <outlet property="ButtonG" destination="R6A-yR-kww" id="RFD-bV-QyU"/>
+                        <outlet property="ButtonH" destination="8pt-CL-yqv" id="sD4-mq-7jB"/>
+                        <outlet property="ButtonI" destination="SNb-gg-91z" id="s5a-La-aAf"/>
+                        <outlet property="ButtonJ" destination="qJp-O7-fH3" id="eZe-nC-atF"/>
+                        <outlet property="ButtonK" destination="Iey-pO-TZ0" id="VBL-ba-AcY"/>
+                        <outlet property="ButtonL" destination="5Ct-Qx-UgS" id="u4K-Xa-0Fl"/>
+                        <outlet property="ButtonM" destination="5v6-XD-7IR" id="eEG-Pn-vbe"/>
+                        <outlet property="ButtonN" destination="hEk-pe-hxZ" id="Qkc-1n-tss"/>
+                        <outlet property="ButtonO" destination="llm-PC-IfK" id="vqX-Yq-WTy"/>
+                        <outlet property="ButtonP" destination="aaD-Sl-pMJ" id="2a8-n3-xPq"/>
+                        <outlet property="ButtonQ" destination="5RE-ql-kxv" id="1fp-MC-RGs"/>
+                        <outlet property="ButtonR" destination="tog-3D-taQ" id="pgd-nG-7pD"/>
+                        <outlet property="ButtonS" destination="NvP-Xk-jns" id="cc0-Xe-7yx"/>
+                        <outlet property="ButtonT" destination="rBO-s0-dO7" id="zRQ-bs-t7g"/>
+                        <outlet property="ButtonU" destination="Lrd-Xv-c2M" id="Rnb-E1-PLj"/>
+                        <outlet property="ButtonV" destination="fsl-KF-PbF" id="rkF-Fm-T5Y"/>
+                        <outlet property="ButtonW" destination="fXm-gc-2rv" id="AUN-t3-7UL"/>
+                        <outlet property="ButtonX" destination="cop-TL-geK" id="Wcp-Jc-Wbr"/>
+                        <outlet property="ButtonY" destination="KLh-9t-fRd" id="tpS-4w-YaC"/>
+                        <outlet property="ButtonZ" destination="gII-TX-FBl" id="FfS-9v-fgA"/>
                         <outlet property="Error_Label" destination="Q0H-16-Ggk" id="hk3-qI-2Z8"/>
                         <outlet property="Label_1" destination="sdt-ye-oBM" id="Gaa-dx-2pa"/>
                         <outlet property="Label_10" destination="8wO-Wp-LYB" id="hbi-Yc-w90"/>
