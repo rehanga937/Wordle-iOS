@@ -10,23 +10,9 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    var testWord:String = ""
-    var slots = [UILabel?]()
-    var gridRow = 1
-    var gridCol = 1
-    var letterCounts:Dictionary<Character,Int8> = [:]
-    var positionStatus = [Int8]()
-    var win:Bool = false
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        let randomNumber = Int.random(in: 0..<words.count)
-        testWord = words[randomNumber]
-        print("Test Word: " + testWord)
-        slots = [Label_1,Label_2,Label_3,Label_4,Label_5,Label_6,Label_7,Label_8,Label_9,Label_10,Label_11,Label_12,Label_13,Label_14,Label_15,Label_16,Label_17,Label_18,Label_19,Label_20,Label_21,Label_22,Label_23,Label_24,Label_25,Label_26,Label_27,Label_28,Label_29,Label_30]
-        letterCounts = GetLetterCounts(testWord)
-    }
-
+    ///#Connections to Objects
+    
+    //Wordle Grid Labels
     @IBOutlet weak var Label_1: UILabel!
     @IBOutlet weak var Label_2: UILabel!
     @IBOutlet weak var Label_3: UILabel!
@@ -58,6 +44,10 @@ class ViewController: UIViewController {
     @IBOutlet weak var Label_29: UILabel!
     @IBOutlet weak var Label_30: UILabel!
     
+    //Error label
+    @IBOutlet weak var Error_Label: UILabel!
+    
+    //keyboard
     @IBAction func PressQ(_ sender: Any) {TypeLetter("Q")}
     @IBAction func PressW(_ sender: Any) {TypeLetter("W")}
     @IBAction func PressE(_ sender: Any) {TypeLetter("E")}
@@ -87,8 +77,43 @@ class ViewController: UIViewController {
     @IBAction func PressBackspace(_ sender: Any) {TypeLetter("⌫")}
     @IBAction func PressReturn(_ sender: Any) {TypeLetter("⏎")}
     
+    ///#Attributes
+    var testWord:String = ""
+    var slots = [UILabel?]()
+    var gridRow = 1
+    var gridCol = 1
+    var letterCounts:Dictionary<Character,Int8> = [:]
+    var copyOfLetterCounts:Dictionary<Character,Int8> = [:]
+
+    
+    ///#Initial Methods
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        slots = [Label_1,Label_2,Label_3,Label_4,Label_5,Label_6,Label_7,Label_8,Label_9,Label_10,Label_11,Label_12,Label_13,Label_14,Label_15,Label_16,Label_17,Label_18,Label_19,Label_20,Label_21,Label_22,Label_23,Label_24,Label_25,Label_26,Label_27,Label_28,Label_29,Label_30]
+        InitializeWordle()
+    }
+    
+    func InitializeWordle() {
+        let randomNumber = Int.random(in: 0..<words.count)
+        testWord = words[randomNumber]
+        print("Test Word: " + testWord)
+        gridRow = 1
+        gridCol = 1
+        letterCounts.removeAll()
+        letterCounts = GetLetterCounts(testWord)
+        for label in slots {
+            label!.backgroundColor = .systemGray5
+            label!.text = ""
+        }
+    }
+
+    
+    ///#Main Method
+    
     func TypeLetter(_ letter:Character) {
-        let gridPos = (gridRow-1)*5 + gridCol
+        let gridPos = (gridRow-1)*5 + gridCol //cursor position
         if (letter == "⌫") {
             if (gridCol != 1) {
                 slots[gridPos - 2]!.text = ""
@@ -96,43 +121,54 @@ class ViewController: UIViewController {
             } else {
                 slots[gridPos - 1]!.text = ""
             }
-        } else if (letter == "⏎") {
-            if (gridCol == 6 && gridRow != 6) {
+        }//backspace
+        else if (letter == "⏎") {
+            if (gridCol == 6 && gridRow != 7) {
                 let userWord = GetUserWord()
                 if (IsUserWordValid(userWord)) {
-                    //proceed
+                    Error_Label.text = ""
+                    print(userWord + " is valid")
                     gridRow += 1
                     gridCol = 1
+                    //proceed with main wordle logic
+                    ExactPositionMatcher(word: userWord)
+                    if (IsWordCorrect(word: userWord)) { DisplayResultAlert(win: true) }
+                    NonExactPositionMatcher(word: userWord)
                 } else {
-                    //word not found code
+                    Error_Label.text = "Word not found!"
+                    print(userWord + " word not found")
                 }
-                
-            }
-        } else {
+            }//cursor is still within the grid, i.e. hasn't run out of turns
+            if (gridRow == 7) {
+                DisplayResultAlert(win: false)
+            }//cursor is out of grid, end game with false condition
+        }//return key
+        else {
             if (gridCol < 6) {
                 slots[gridPos - 1]!.text = String(letter)
                 gridCol += 1
             }
         }
-    }
+    }/* The flow of the game is controlled by this function, a.k.a the flow is controlled by the custom keyboard buttons (which call this function when tapped) */
+    
+    
+    ///#Support Methods used by Main Method
     
     func GetUserWord() -> String {
         var userWord:String = ""
-        var gridPos = (gridRow-1)*5 + gridCol
-        for i in 1...5 {
-            gridPos -= 1
+        var gridPos = (gridRow-1)*5 + gridCol - 5
+        for _ in 1...5 {
             userWord += (slots[gridPos - 1]!.text) ?? ""
+            gridPos += 1
         }
         return userWord
-    }
+    }//Returns user's word from the current grid row
     
     func BinarySearch(_ element:String, _ array:[String]) -> Bool {
         var low = 0
         var high = array.count - 1
-        
         while low <= high {
             let mid = low + (high - low) / 2
-            
             switch array[mid] {
             case element:
                 return true
@@ -142,9 +178,8 @@ class ViewController: UIViewController {
                 high = mid - 1
             }
         }
-        
         return false
-    }
+    }//Binary search implementation for an element and an array (String)
     
     func IsUserWordValid(_ userWord:String) -> Bool{
         if (BinarySearch(userWord, words)){
@@ -154,27 +189,82 @@ class ViewController: UIViewController {
             return true
         }
         return false
-    }
+    }//checks if user's word is found in either of the 2 arrays in words.swift
     
     func GetLetterCounts(_ testWord:String) -> Dictionary<Character,Int8>{
         var letterCounts:Dictionary<Character,Int8> = [:]
         for c in testWord {
-            if let count=letterCounts[c] {
+            if letterCounts[c] != nil {
                 letterCounts[c]!+=1
             } else {
                 letterCounts.updateValue(1, forKey: c)
             }
         }
         return letterCounts
-    }
+    }//returns a dictionary with keys been the unique letters of the given word, and the values been their no. of occurances
     
-    func WordleMain() {
-        
-    }
     
     func ExactPositionMatcher(word:String) {
-        
-    }
+        var index:Int = 0
+        copyOfLetterCounts = letterCounts
+        for c in word {
+            if (c == testWord[word.index(word.startIndex, offsetBy: index)]){
+                copyOfLetterCounts[c]! -= 1
+                //mark position green
+                let gridPos = (gridRow-1)*5 + gridCol - 5 + index
+                slots[gridPos - 1]!.backgroundColor = .green
+            }
+            index += 1
+        }
+    }//marks letters of user's guess in the correct position in green color, and updates the copyOfLetterCounts dictionary (required for NonExactPositionMatcher function)
+    
+    func IsWordCorrect(word:String) -> Bool {
+        var sum = 0
+        for count in copyOfLetterCounts.values {
+            sum += Int(count)
+        }
+        if (sum == 0) { return true } else { return false }
+        //if word was correct, copyOfLetterCounts dictionary would have been depleted via the ExactPositionMatcher function
+    }//checks if user's guess matches the actual test word
+    
+    func NonExactPositionMatcher(word:String) {
+        var index = 0
+        for c in word {
+            let gridPos = (gridRow-1)*5 + gridCol - 5 + index
+            if (slots[gridPos - 1]!.backgroundColor == .green) {
+                index += 1
+                continue
+            }//if position has been marked correct (green), can skip
+            if (copyOfLetterCounts[c] ?? 0  > 0) {
+                slots[gridPos - 1]!.backgroundColor = .yellow
+                copyOfLetterCounts[c]! -= 1
+            }
+            index += 1
+        }
+    }//marks letters of the user's guess present in the test word, but in wrong position in yellow color. Must be called after ExactPositionMatcher function due to use of copyOfLetterCounts dictionary.
+    
+    func DisplayResultAlert(win:Bool) {
+        let alertTitle:String
+        let alertMessage:String
+        if (win) {
+            alertTitle = "You Won!"
+            alertMessage = ""
+        } else {
+            alertTitle = "Out of Turns!"
+            alertMessage = "Word was " + testWord
+        }
+        let alertController = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: .alert)
+        let action1 = UIAlertAction(title: "Play Again!",
+        style: .default) { (action:UIAlertAction) in
+            print("Play again pressed")
+            self.InitializeWordle()
+        }
+        alertController.addAction(action1)
+        self.present(alertController, animated: true, completion:
+        nil)
+    }//displays alert window on game loss or win, with play-again prompt
+    
+    
     
 }
 

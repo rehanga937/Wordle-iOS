@@ -893,6 +893,12 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q0H-16-Ggk" userLabel="Error_Label">
+                                <rect key="frame" x="187.5" y="435" width="0.0" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -912,6 +918,7 @@
                             <constraint firstItem="scG-D8-06Q" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="84O-fq-tm6"/>
                             <constraint firstItem="cVW-g7-Edo" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="8UO-as-cXk"/>
                             <constraint firstItem="iBN-Sp-nZ6" firstAttribute="top" secondItem="a1s-1R-RdK" secondAttribute="bottom" constant="20" id="8ud-9u-jsl"/>
+                            <constraint firstItem="Q0H-16-Ggk" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="9L9-y2-d8L"/>
                             <constraint firstItem="tFV-fr-v8X" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="9Yf-qu-vpb"/>
                             <constraint firstItem="Vc9-7Q-af6" firstAttribute="top" secondItem="pHI-gU-VMF" secondAttribute="bottom" constant="9" id="A6T-0r-QY3"/>
                             <constraint firstItem="a1s-1R-RdK" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="AhD-0q-VIy"/>
@@ -924,6 +931,7 @@
                             <constraint firstItem="Tkn-fN-qiE" firstAttribute="top" secondItem="5KA-31-a5T" secondAttribute="bottom" constant="9" id="HTA-5M-GJZ"/>
                             <constraint firstItem="hv0-d4-LjY" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="J7I-F0-Ouq"/>
                             <constraint firstItem="AHA-RE-MVx" firstAttribute="leading" secondItem="5KA-31-a5T" secondAttribute="trailing" constant="9" id="JF7-ID-h0F"/>
+                            <constraint firstItem="Q0H-16-Ggk" firstAttribute="top" secondItem="QcV-4r-AsE" secondAttribute="bottom" constant="18" id="JXm-Yh-LsT"/>
                             <constraint firstItem="yeM-qk-cXd" firstAttribute="leading" secondItem="rcH-TR-M8y" secondAttribute="trailing" constant="9" id="Kbf-M1-0bz"/>
                             <constraint firstItem="pHI-gU-VMF" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="100" id="L4S-bq-am4"/>
                             <constraint firstItem="O6x-NS-09M" firstAttribute="leading" secondItem="N9X-xd-X0W" secondAttribute="trailing" constant="9" id="LIQ-pc-CQI"/>
@@ -972,6 +980,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="Error_Label" destination="Q0H-16-Ggk" id="hk3-qI-2Z8"/>
                         <outlet property="Label_1" destination="sdt-ye-oBM" id="Gaa-dx-2pa"/>
                         <outlet property="Label_10" destination="8wO-Wp-LYB" id="hbi-Yc-w90"/>
                         <outlet property="Label_11" destination="0aW-T4-sNp" id="73s-zP-tlw"/>
@@ -1006,7 +1015,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="57.251908396946561" y="-2.1126760563380285"/>
+            <point key="canvasLocation" x="34" y="-20"/>
         </scene>
     </scenes>
     <resources>
