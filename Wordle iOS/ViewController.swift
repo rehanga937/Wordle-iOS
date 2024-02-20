@@ -239,20 +239,21 @@ class ViewController: UIViewController {
     
     
     func ExactPositionMatcher(word:String) {
-        var index:Int = 0
+        var n:Int = 0
         copyOfLetterCounts = letterCounts
         for c in word {
-            if (c == testWord[word.index(word.startIndex, offsetBy: index)]){
+            let index = testWord.index(testWord.startIndex, offsetBy: n)
+            if (c == testWord[index]){
                 copyOfLetterCounts[c]! -= 1
                 //mark position green
-                let gridPos = (gridRow-1)*5 + gridCol - 5 + index
+                let gridPos = (gridRow-1)*5 + gridCol - 5 + n
                 slots[gridPos - 1]!.backgroundColor = .green
                 //mark keyboard letter green
                 let stringC = String(c)
                 let adjustedAsciiValue:Int = Int(UnicodeScalar(stringC)!.value) - 65
                 keyboardLetters[adjustedAsciiValue]!.configuration?.background.backgroundColor = .green
             }
-            index += 1
+            n += 1
         }
     }//marks letters of user's guess in the correct position in green color, and updates the copyOfLetterCounts dictionary (required for NonExactPositionMatcher function)
     
