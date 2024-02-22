@@ -104,7 +104,12 @@ class ViewController: UIViewController {
     @IBOutlet weak var ButtonX: UIButton!
     @IBOutlet weak var ButtonY: UIButton!
     @IBOutlet weak var ButtonZ: UIButton!
-
+    
+    
+    @IBAction func TapTestButton(_ sender: Any) {
+        
+    }
+    
     
     ///#Attributes
     var testWord:String = ""
@@ -114,6 +119,7 @@ class ViewController: UIViewController {
     var gridCol = 1
     var letterCounts:Dictionary<Character,Int8> = [:]
     var copyOfLetterCounts:Dictionary<Character,Int8> = [:]
+    var wordleRecords = [WordleRecord]()
 
     
     ///#Initial Methods
@@ -141,6 +147,11 @@ class ViewController: UIViewController {
         for button in keyboardLetters {
             button!.configuration?.background.backgroundColor = .clear
         }
+        let load = ViewController.Load()
+        if (load != nil) {
+            wordleRecords = load!
+        }
+    
     }
 
     
@@ -161,20 +172,22 @@ class ViewController: UIViewController {
                 let userWord = GetUserWord()
                 if (IsUserWordValid(userWord)) {
                     Error_Label.text = ""
-                    print(userWord + " is valid")
                     gridRow += 1
                     gridCol = 1
                     //proceed with main wordle logic
                     ExactPositionMatcher(word: userWord)
-                    if (IsWordCorrect(word: userWord)) { DisplayResultAlert(win: true) }
+                    if (IsWordCorrect(word: userWord)) {
+                        Save(word: testWord, numOfAttempts: Int8(gridRow - 1))
+                        DisplayResultAlert(win: true)
+                    }
                     NonExactPositionMatcher(word: userWord)
                 } else {
                     Error_Label.text = "Word not found!"
-                    print(userWord + " word not found")
                 }
             }//cursor is still within the grid, i.e. hasn't run out of turns
             if (gridRow == 7) {
                 DisplayResultAlert(win: false)
+                Save(word: testWord, numOfAttempts: Int8(gridRow))
             }//cursor is out of grid, end game with false condition
         }//return key
         else {
@@ -307,7 +320,6 @@ class ViewController: UIViewController {
         let alertController = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: .alert)
         let action1 = UIAlertAction(title: "Play Again!",
         style: .default) { (action:UIAlertAction) in
-            print("Play again pressed")
             self.InitializeWordle()
         }
         alertController.addAction(action1)
@@ -315,6 +327,29 @@ class ViewController: UIViewController {
         nil)
     }//displays alert window on game loss or win, with play-again prompt
     
+    func Save(word :String, numOfAttempts: Int8) {
+        let record = WordleRecord(word: word, numOfAttempts: numOfAttempts)
+        wordleRecords.append(record!)
+        do {
+            let data = try NSKeyedArchiver.archivedData(withRootObject: wordleRecords, requiringSecureCoding: true)
+            try data.write(to: WordleRecord.archiveURL)
+            print("Wordle stats updated")
+        }
+        catch {
+            print("Error updating wordle stats: \(error)")
+        }
+    }
+    
+    static func Load() -> [WordleRecord]? {
+        do {
+            let rawdata = try Data(contentsOf: WordleRecord.archiveURL)
+            let unarchivedData = try NSKeyedUnarchiver.unarchivedObject(ofClasses: [WordleRecord.self, NSString.self, NSArray.self], from: rawdata)
+            return unarchivedData as? [WordleRecord]
+        } catch {
+            print("Error loading wordle stats: \(error)")
+            return nil
+        }
+    }
     
     
 }

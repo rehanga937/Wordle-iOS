@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A314511F2B8728AE0085F2D4 /* WordleRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = A314511E2B8728AE0085F2D4 /* WordleRecord.swift */; };
+		A31451212B8757890085F2D4 /* StatsViewSwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31451202B8757890085F2D4 /* StatsViewSwiftUI.swift */; };
+		A31451232B8767250085F2D4 /* StatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31451222B8767250085F2D4 /* StatsViewController.swift */; };
+		A31451272B876D500085F2D4 /* ValueForCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31451262B876D500085F2D4 /* ValueForCategory.swift */; };
 		A34891B32B83088400135DE3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34891B22B83088400135DE3 /* AppDelegate.swift */; };
 		A34891B52B83088400135DE3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34891B42B83088400135DE3 /* SceneDelegate.swift */; };
 		A34891B72B83088400135DE3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34891B62B83088400135DE3 /* ViewController.swift */; };
@@ -37,6 +41,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A314511E2B8728AE0085F2D4 /* WordleRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordleRecord.swift; sourceTree = "<group>"; };
+		A31451202B8757890085F2D4 /* StatsViewSwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsViewSwiftUI.swift; sourceTree = "<group>"; };
+		A31451222B8767250085F2D4 /* StatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsViewController.swift; sourceTree = "<group>"; };
+		A31451262B876D500085F2D4 /* ValueForCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValueForCategory.swift; sourceTree = "<group>"; };
 		A34891AF2B83088400135DE3 /* Wordle iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Wordle iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A34891B22B83088400135DE3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A34891B42B83088400135DE3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -104,11 +112,15 @@
 				A34891B22B83088400135DE3 /* AppDelegate.swift */,
 				A34891B42B83088400135DE3 /* SceneDelegate.swift */,
 				A34891B62B83088400135DE3 /* ViewController.swift */,
+				A31451202B8757890085F2D4 /* StatsViewSwiftUI.swift */,
 				A34891B82B83088400135DE3 /* Main.storyboard */,
 				A34891BB2B83088500135DE3 /* Assets.xcassets */,
 				A34891BD2B83088500135DE3 /* LaunchScreen.storyboard */,
 				A34891C02B83088500135DE3 /* Info.plist */,
 				A39489562B832F2500C2DD55 /* words.swift */,
+				A314511E2B8728AE0085F2D4 /* WordleRecord.swift */,
+				A31451222B8767250085F2D4 /* StatsViewController.swift */,
+				A31451262B876D500085F2D4 /* ValueForCategory.swift */,
 			);
 			path = "Wordle iOS";
 			sourceTree = "<group>";
@@ -264,7 +276,11 @@
 			files = (
 				A34891B72B83088400135DE3 /* ViewController.swift in Sources */,
 				A39489572B832F2500C2DD55 /* words.swift in Sources */,
+				A31451212B8757890085F2D4 /* StatsViewSwiftUI.swift in Sources */,
+				A31451272B876D500085F2D4 /* ValueForCategory.swift in Sources */,
 				A34891B32B83088400135DE3 /* AppDelegate.swift in Sources */,
+				A31451232B8767250085F2D4 /* StatsViewController.swift in Sources */,
+				A314511F2B8728AE0085F2D4 /* WordleRecord.swift in Sources */,
 				A34891B52B83088400135DE3 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
