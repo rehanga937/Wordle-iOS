@@ -35,12 +35,12 @@ class StatsViewController: UIViewController {
     func PrepareRecordsForChart(records:[WordleRecord]) -> [ValuePerCategory] {
         
         var data: [ValuePerCategory] = [
-            .init(category: "1 Attempt", value: 0),
-            .init(category: "2 Attempts", value: 0),
-            .init(category: "3 Attempts", value: 0),
-            .init(category: "4 Attempts", value: 0),
-            .init(category: "5 Attempts", value: 0),
-            .init(category: "6 Attempts", value: 0),
+            .init(category: "1", value: 0),
+            .init(category: "2", value: 0),
+            .init(category: "3", value: 0),
+            .init(category: "4", value: 0),
+            .init(category: "5", value: 0),
+            .init(category: "6", value: 0),
             .init(category: "Loss", value: 0),
         ]
         
