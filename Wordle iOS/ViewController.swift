@@ -175,6 +175,7 @@ class ViewController: UIViewController {
                     if (IsWordCorrect(word: userWord)) {
                         Save(word: testWord, numOfAttempts: Int8(gridRow - 1))
                         DisplayResultAlert(win: true)
+                        return
                     }
                     NonExactPositionMatcher(word: userWord)
                 } else {
