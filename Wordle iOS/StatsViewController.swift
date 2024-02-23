@@ -18,17 +18,11 @@ class StatsViewController: UIViewController {
         print(wordleRecords?.count ?? "No stats found.")
         
         if wordleRecords != nil {
-            print("entered here")
             let tableForChart = PrepareRecordsForChart(records: wordleRecords!)
-            for item in tableForChart {
-                print(item.value)
-            }
             let vc = UIHostingController(rootView: StatsViewSwiftUI(tableForChart: tableForChart))
             vc.view.frame = CGRectMake(0, 0, 350, 450);
             view.addSubview(vc.view)
-        }
-        
-        
+        }//implements a hosting view controller to display the chart made in SwiftUI
     }
     
 
@@ -47,7 +41,9 @@ class StatsViewController: UIViewController {
         for record in records {
             data[Int(record.numOfAttempts) - 1].value += 1
         }
+        
         return data
-    }
+    }/*converts the array of save records into an array of x,y coordinates that can be
+      fed into a chart (x-no. of attempts, y-no. of games) */
 
 }

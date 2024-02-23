@@ -105,11 +105,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var ButtonY: UIButton!
     @IBOutlet weak var ButtonZ: UIButton!
     
-    
-    @IBAction func TapTestButton(_ sender: Any) {
-        
-    }
-    
+ 
     
     ///#Attributes
     var testWord:String = ""
@@ -338,7 +334,7 @@ class ViewController: UIViewController {
         catch {
             print("Error updating wordle stats: \(error)")
         }
-    }
+    }//saves the test word, and no. of attempts taken by user to solve (7 attempts = failure)
     
     static func Load() -> [WordleRecord]? {
         do {
@@ -349,7 +345,7 @@ class ViewController: UIViewController {
             print("Error loading wordle stats: \(error)")
             return nil
         }
-    }
+    }//simply returns the saved array of wordle records
     
     
 }
