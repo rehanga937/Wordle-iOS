@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A3113B8C2DD0A5D8009B4F44 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = A3113B8B2DD0A5D8009B4F44 /* README.md */; };
 		A314511F2B8728AE0085F2D4 /* WordleRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = A314511E2B8728AE0085F2D4 /* WordleRecord.swift */; };
 		A31451212B8757890085F2D4 /* StatsViewSwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31451202B8757890085F2D4 /* StatsViewSwiftUI.swift */; };
 		A31451232B8767250085F2D4 /* StatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31451222B8767250085F2D4 /* StatsViewController.swift */; };
@@ -41,6 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A3113B8B2DD0A5D8009B4F44 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		A314511E2B8728AE0085F2D4 /* WordleRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordleRecord.swift; sourceTree = "<group>"; };
 		A31451202B8757890085F2D4 /* StatsViewSwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsViewSwiftUI.swift; sourceTree = "<group>"; };
 		A31451222B8767250085F2D4 /* StatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsViewController.swift; sourceTree = "<group>"; };
@@ -60,6 +62,10 @@
 		A34891D52B83088500135DE3 /* Wordle_iOSUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wordle_iOSUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		A39489562B832F2500C2DD55 /* words.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = words.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		A3113B8D2DD0A6AD009B4F44 /* Images */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Images; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		A34891AC2B83088400135DE3 /* Frameworks */ = {
@@ -89,6 +95,8 @@
 		A34891A62B83088400135DE3 = {
 			isa = PBXGroup;
 			children = (
+				A3113B8B2DD0A5D8009B4F44 /* README.md */,
+				A3113B8D2DD0A6AD009B4F44 /* Images */,
 				A34891B12B83088400135DE3 /* Wordle iOS */,
 				A34891C82B83088500135DE3 /* Wordle iOSTests */,
 				A34891D22B83088500135DE3 /* Wordle iOSUITests */,
@@ -156,6 +164,9 @@
 			buildRules = (
 			);
 			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				A3113B8D2DD0A6AD009B4F44 /* Images */,
 			);
 			name = "Wordle iOS";
 			productName = "Wordle iOS";
@@ -249,6 +260,7 @@
 			files = (
 				A34891BF2B83088500135DE3 /* LaunchScreen.storyboard in Resources */,
 				A34891BC2B83088500135DE3 /* Assets.xcassets in Resources */,
+				A3113B8C2DD0A5D8009B4F44 /* README.md in Resources */,
 				A34891BA2B83088400135DE3 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
